@@ -32,10 +32,15 @@ Drive drive = new Drive();
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
+  int cameraPort = 0;
+  static UsbCamera camera;
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+    camera = CameraServer.getInstance().startAutomaticCapture(cameraPort);
+    camera.setConnectVerbose(0);
+    
    
 
   }
@@ -84,7 +89,7 @@ Drive drive = new Drive();
 
   Joystick stick = new Joystick(0);
   CameraServer server = CameraServer.getInstance();
-  UsbCamera camera;
+  //UsbCamera camera;
 
   @Override
   public void teleopInit() {
